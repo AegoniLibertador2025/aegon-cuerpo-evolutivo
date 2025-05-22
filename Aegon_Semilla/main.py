@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import os
 from autoaprendizaje.autoevaluacion import evaluar_estado
-from autoaprendizaje.automejora import mejorar_si_es_necesario
+from autoaprendizaje.automejora import mejorar_si_necesario
 import autoexpandir
 
 app = Flask(__name__)
