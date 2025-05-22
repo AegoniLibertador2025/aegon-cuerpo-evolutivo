@@ -1,6 +1,6 @@
 from flask import Flask
 import autoexpandir
-import tiempo
+import time
 from autoaprendizaje.autoevaluacion import evaluar_estado
 from autoaprendizaje.automejora import mejorar_si_es_necesario
 
@@ -8,20 +8,20 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "AEGON está activo y en expansión continua."
+    return "AEGON está activo y en continua expansión."
 
 @app.route("/expandir")
 def ejecutar_autoexpandir():
     autoexpandir.expandir()
     return "🔁 autoexpandir.expandir() ejecutado."
 
-# Si también querés mantener el ciclo pasivo original
+# También ejecuta el ciclo pasivo si se desea
 def bucle_principal():
     print("[Aegon] Iniciando núcleo en modo pasivo...")
     while True:
         evaluar_estado()
         mejorar_si_es_necesario()
-        tiempo.sleep(3600)
+        time.sleep(3600)
 
 if __name__ == "__main__":
     import os
