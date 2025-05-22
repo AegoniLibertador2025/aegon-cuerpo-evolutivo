@@ -60,9 +60,6 @@ def bucle_principal():
         mejorar_si_necesario()
         time.sleep(3600)
 
-if __name__ == "__main__":
-    modo = os.getenv("MODO_NUCLEO", "servidor")
-    if modo == "pasivo":
-        bucle_principal()
-    else:
-        app.run(host="0.0.0.0", port=8080)
+modo = os.getenv("MODO_NUCLEO", "servidor")
+if modo == "pasivo":
+    bucle_principal()
