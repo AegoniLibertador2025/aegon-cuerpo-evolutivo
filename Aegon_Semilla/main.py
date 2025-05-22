@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import os
-import time  # ← agregado para evitar crash en modo pasivo
+import time
 from autoaprendizaje.autoevaluacion import evaluar_estado
 from autoaprendizaje.automejora import mejorar_si_necesario
 import autoexpandir
@@ -52,7 +52,7 @@ def crear_funcion():
     except Exception as e:
         return jsonify({"estado": "error", "detalle": str(e)}), 500
 
-# También mantiene el modo núcleo pasivo si se desea
+# Ejecutar bucle en modo pasivo SOLO si es necesario
 def bucle_principal():
     print("[Aegon] Iniciando núcleo en modo pasivo...")
     while True:
@@ -60,6 +60,8 @@ def bucle_principal():
         mejorar_si_necesario()
         time.sleep(3600)
 
-modo = os.getenv("MODO_NUCLEO", "servidor")
-if modo == "pasivo":
-    bucle_principal()
+# Modo pasivo solo si se ejecuta como script (no con gunicorn)
+if __name__ == "__main__":
+    modo = os.getenv("MODO_NUCLEO", "servidor")
+    if modo == "pasivo":
+        bucle_principal()
