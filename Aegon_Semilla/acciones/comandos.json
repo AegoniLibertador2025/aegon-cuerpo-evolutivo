@@ -1,0 +1,7 @@
+{
+    "crear_archivo": {
+        "descripcion": "Crea un archivo de texto con el contenido proporcionado.",
+        "parametros": ["nombre", "contenido"],
+        "activo": true
+    }
+}

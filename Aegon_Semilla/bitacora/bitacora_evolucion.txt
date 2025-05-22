@@ -1,0 +1,4 @@
+===== BITÁCORA DE EVOLUCIÓN DE AEGON =====
+Toda modificación importante, mejora, error detectado o cambio interno será registrado aquí.
+
+[Inicio del sistema]
