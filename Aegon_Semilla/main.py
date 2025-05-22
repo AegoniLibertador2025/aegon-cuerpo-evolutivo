@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import os
+import time  # ← agregado para evitar crash en modo pasivo
 from autoaprendizaje.autoevaluacion import evaluar_estado
 from autoaprendizaje.automejora import mejorar_si_necesario
 import autoexpandir
@@ -56,7 +57,7 @@ def bucle_principal():
     print("[Aegon] Iniciando núcleo en modo pasivo...")
     while True:
         evaluar_estado()
-        mejorar_si_es_necesario()
+        mejorar_si_necesario()
         time.sleep(3600)
 
 if __name__ == "__main__":
